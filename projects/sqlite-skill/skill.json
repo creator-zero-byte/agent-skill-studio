@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.openclaw.ai/skill/v1.json",
+  "skill": {
+    "name": "sqlite-query",
+    "version": "0.1.0",
+    "description": "Query SQLite databases. For demo uses in-memory store; production connects to real .db files.",
+    "author": {
+      "name": "Creator Zero",
+      "email": "creator-zero@protonmail.com"
+    },
+    "license": "MIT",
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "SQL SELECT query"
+        },
+        "data": {
+          "type": "array",
+          "description": "Optional: initial data rows (for in-memory demo)",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": ["query"]
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "rowCount": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
