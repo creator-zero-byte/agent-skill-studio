@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  openclaw:
+    build: .
+    container_name: openclaw-hosted
+    ports:
+      - "3000:3000"   # Web UI
+      - "3333:3333"   # API
+    volumes:
+      - ./data:/app/.openclaw/data
+      - ./logs:/app/.openclaw/logs
+      - ./skills:/app/.openclaw/skills:ro
+    environment:
+      - NODE_ENV=production
+      - OPENCLAW_LOG_LEVEL=info
+      - OPENCLAW_PORT=3333
+      - OPENCLAW_UI_PORT=3000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3333/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+
+  # Optional: nginx reverse proxy with SSL
+  nginx:
+    image: nginx:alpine
+    container_name: openclaw-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - openclaw
+    restart: unless-stopped
