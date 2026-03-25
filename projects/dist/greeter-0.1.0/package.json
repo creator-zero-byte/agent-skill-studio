@@ -1,0 +1,21 @@
+{
+  "name": "greeter",
+  "version": "0.1.0",
+  "description": "A friendly greeting skill that responds to names",
+  "author": {
+    "name": "Creator Zero",
+    "email": "creator-zero@protonmail.com"
+  },
+  "license": "MIT",
+  "publishedAt": "2026-03-25T07:20:13.967Z",
+  "openclaw": {
+    "minVersion": "1.0.0",
+    "compatible": true
+  },
+  "files": [
+    "dist/**/*",
+    "skill.json",
+    "README.md",
+    "LICENSE"
+  ]
+}

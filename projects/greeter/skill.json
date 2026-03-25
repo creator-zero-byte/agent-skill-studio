@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schemas.openclaw.ai/skill/v1.json",
+  "skill": {
+    "name": "greeter",
+    "version": "0.1.0",
+    "description": "A friendly greeting skill that responds to names",
+    "author": {
+      "name": "Creator Zero",
+      "email": "creator-zero@protonmail.com"
+    },
+    "license": "MIT",
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the person to greet"
+        },
+        "mood": {
+          "type": "string",
+          "description": "Optional: cheerful, formal, sarcastic",
+          "default": "cheerful"
+        }
+      },
+      "required": ["name"]
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "greeting": {
+          "type": "string",
+          "description": "The greeting message"
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "When the greeting was generated"
+        }
+      }
+    }
+  }
+}
