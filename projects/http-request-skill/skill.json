@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schemas.openclaw.ai/skill/v1.json",
+  "skill": {
+    "name": "http-request",
+    "version": "0.1.0",
+    "description": "Make HTTP requests to any API. Fetch data, POST forms, handle auth.",
+    "author": {
+      "name": "Creator Zero",
+      "email": "creator-zero@protonmail.com"
+    },
+    "license": "MIT",
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Target URL"
+        },
+        "method": {
+          "type": "string",
+          "enum": ["GET", "POST", "PUT", "DELETE"],
+          "default": "GET"
+        },
+        "headers": {
+          "type": "object",
+          "description": "HTTP headers",
+          "additionalProperties": { "type": "string" }
+        },
+        "body": {
+          "type": "object",
+          "description": "Request body (for POST/PUT)"
+        }
+      },
+      "required": ["url"]
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "description": "HTTP status code"
+        },
+        "headers": {
+          "type": "object",
+          "description": "Response headers"
+        },
+        "data": {
+          "type": "any",
+          "description": "Response body (parsed JSON if applicable)"
+        },
+        "ok": {
+          "type": "boolean",
+          "description": "Whether request succeeded (2xx-3xx)"
+        }
+      }
+    }
+  }
+}
