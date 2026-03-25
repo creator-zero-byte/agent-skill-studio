@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schemas.openclaw.ai/skill/v1.json",
+  "skill": {
+    "name": "web-search",
+    "version": "0.1.0",
+    "description": "Search the web using DuckDuckGo. Returns titles, URLs, and snippets. No API key required.",
+    "author": {
+      "name": "Creator Zero",
+      "email": "creator-zero@protonmail.com"
+    },
+    "license": "MIT",
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Search query"
+        },
+        "count": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Number of results (1-10)"
+        }
+      },
+      "required": ["query"]
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "url": { "type": "string" },
+              "snippet": { "type": "string" }
+            }
+          }
+        },
+        "total": {
+          "type": "number",
+          "description": "Total results found"
+        }
+      }
+    }
+  }
+}
