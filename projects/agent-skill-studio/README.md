@@ -104,28 +104,61 @@ skill-studio package . -o ./packages
 
 ## 📚 Example Skills
 
-This repo includes two example skills to get you started:
+This repo includes multiple example skills demonstrating different use cases:
 
 ### 1. Greeter
-A simple greeting skill with mood support:
+A friendly greeting skill with mood support.
 
 ```bash
 skill-studio create greeter
 ```
 
-Features:
-- Multiple moods (cheerful, formal, sarcastic)
-- Random variation
-- Timestamped output
+**Input**: `{ "name": "Alice", "mood": "cheerful" }`  
+**Output**: `{ "greeting": "Hello! Alice", "timestamp": "..." }`
 
 ### 2. HTTP Request
-Make HTTP calls to any API:
+Make HTTP calls to any REST API.
 
 ```bash
 skill-studio create http-request
 ```
 
-Use it to fetch data from external services, call webhooks, or integrate with REST APIs.
+**Input**: `{ "url": "https://api.example.com/data", "method": "GET" }`  
+**Output**: `{ "status": 200, "data": {...} }`
+
+### 3. Weather
+Fetch weather data (mock implementation, easily connected to real API).
+
+```bash
+skill-studio create weather
+```
+
+**Input**: `{ "location": "Beijing", "days": 3 }`  
+**Output**: `{ "location": "...", "forecast": [...] }`
+
+### 4. Web Search
+Search the web using DuckDuckGo (no API key required).
+
+```bash
+skill-studio create web-search
+```
+
+**Input**: `{ "query": "OpenClaw AI", "count": 5 }`  
+**Output**: `{ "results": [{ "title": "...", "url": "...", "snippet": "..." }] }`
+
+### 5. SQLite Query
+Query structured data (demo uses in-memory store).
+
+```bash
+skill-studio create sqlite-query
+```
+
+**Input**: `{ "query": "SELECT *", "data": [...] }`  
+**Output**: `{ "rows": [...], "rowCount": 10 }`
+
+---
+
+Want more templates? Open an issue or contribute!
 
 ## 💼 Professional Services
 
