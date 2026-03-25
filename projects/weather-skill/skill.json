@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.openclaw.ai/skill/v1.json",
+  "skill": {
+    "name": "weather",
+    "version": "0.1.0",
+    "description": "Get current weather and forecast for any location using Open-Meteo API (free, no key required).",
+    "author": {
+      "name": "Creator Zero",
+      "email": "creator-zero@protonmail.com"
+    },
+    "license": "MIT",
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "City name or coordinates (lat,lon)"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["current", "forecast"],
+          "default": "current"
+        },
+        "days": {
+          "type": "number",
+          "default": 3,
+          "description": "Number of forecast days (if type=forecast)"
+        }
+      },
+      "required": ["location"]
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "location": { "type": "string" },
+        "temperature": { "type": "number" },
+        "description": { "type": "string" },
+        "forecast": { "type": "array", "items": { "type": "object" } }
+      }
+    }
+  }
+}
